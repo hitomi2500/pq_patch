@@ -1,0 +1,327 @@
+name = "pq-fixed2"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "0"
+custom_size  = "3E"
+sjis_start   = "8140"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "3F"
+custom_size  = "2C"
+sjis_start   = "8180"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "CB"
+custom_size  = "2B"
+sjis_start   = "824F"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "FC"
+custom_size  = "71"
+sjis_start   = "8281"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "178"
+custom_size  = "3e"
+sjis_start   = "8340"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1B7"
+custom_size  = "58"
+sjis_start   = "8380"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "234"
+custom_size  = "3e"
+sjis_start   = "8440"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "273"
+custom_size  = "18"
+sjis_start   = "8480"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "582"
+custom_size  = "6f"
+sjis_start   = "889F"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "5e0"
+custom_size  = "3f"
+sjis_start   = "8940"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "61f"
+custom_size  = "7f"
+sjis_start   = "8980"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "69c"
+custom_size  = "3f"
+sjis_start   = "8a40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "6db"
+custom_size  = "7f"
+sjis_start   = "8a80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "758"
+custom_size  = "3f"
+sjis_start   = "8b40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "797"
+custom_size  = "7f"
+sjis_start   = "8b80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "814"
+custom_size  = "3f"
+sjis_start   = "8c40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "853"
+custom_size  = "7f"
+sjis_start   = "8c80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "8d0"
+custom_size  = "3f"
+sjis_start   = "8d40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "90f"
+custom_size  = "7f"
+sjis_start   = "8d80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "98c"
+custom_size  = "3f"
+sjis_start   = "8e40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "9cb"
+custom_size  = "7f"
+sjis_start   = "8e80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "a48"
+custom_size  = "3f"
+sjis_start   = "8f40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "a87"
+custom_size  = "7f"
+sjis_start   = "8f80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "b04"
+custom_size  = "3f"
+sjis_start   = "9040"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "b43"
+custom_size  = "7f"
+sjis_start   = "9080"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "bc0"
+custom_size  = "3f"
+sjis_start   = "9140"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "bff"
+custom_size  = "7f"
+sjis_start   = "9180"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "c7c"
+custom_size  = "3f"
+sjis_start   = "9240"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "cbb"
+custom_size  = "7f"
+sjis_start   = "9280"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "d38"
+custom_size  = "3f"
+sjis_start   = "9340"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "d77"
+custom_size  = "7f"
+sjis_start   = "9380"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "df4"
+custom_size  = "3f"
+sjis_start   = "9440"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "e33"
+custom_size  = "7f"
+sjis_start   = "9480"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "eb0"
+custom_size  = "3f"
+sjis_start   = "9540"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "eef"
+custom_size  = "7f"
+sjis_start   = "9580"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "F6C"
+custom_size  = "3f"
+sjis_start   = "9640"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "FAB"
+custom_size  = "7f"
+sjis_start   = "9680"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1028"
+custom_size  = "3f"
+sjis_start   = "9740"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1067"
+custom_size  = "7f"
+sjis_start   = "9780"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "10E4"
+custom_size  = "3f"
+sjis_start   = "9840"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1123"
+custom_size  = "7f"
+sjis_start   = "9880"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "11A0"
+custom_size  = "3f"
+sjis_start   = "9940"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "11DF"
+custom_size  = "7f"
+sjis_start   = "9980"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "125C"
+custom_size  = "3f"
+sjis_start   = "9a40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "129B"
+custom_size  = "7f"
+sjis_start   = "9a80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1318"
+custom_size  = "3f"
+sjis_start   = "9b40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1357"
+custom_size  = "7f"
+sjis_start   = "9b80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "13D4"
+custom_size  = "3f"
+sjis_start   = "9c40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1413"
+custom_size  = "7f"
+sjis_start   = "9c80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1490"
+custom_size  = "3f"
+sjis_start   = "9d40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "14CF"
+custom_size  = "7f"
+sjis_start   = "9d80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "154C"
+custom_size  = "3f"
+sjis_start   = "9e40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "158B"
+custom_size  = "7f"
+sjis_start   = "9e80"
+
+[[mappings]]
+code = "F001"
+char = "\uE000"
+
+[[mappings]]
+code = "F002"
+char = "\uE001"
