@@ -318,6 +318,150 @@ custom_start = "158B"
 custom_size  = "7f"
 sjis_start   = "9e80"
 
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1608"
+custom_size  = "3f"
+sjis_start   = "9f40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1647"
+custom_size  = "7f"
+sjis_start   = "9f80"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "16C4"
+custom_size  = "3f"
+sjis_start   = "e040"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1703"
+custom_size  = "7f"
+sjis_start   = "e080"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1780"
+custom_size  = "3f"
+sjis_start   = "e140"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "17BF"
+custom_size  = "7f"
+sjis_start   = "e180"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "183C"
+custom_size  = "3f"
+sjis_start   = "e240"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "187B"
+custom_size  = "7f"
+sjis_start   = "e280"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "18F8"
+custom_size  = "3f"
+sjis_start   = "e340"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1937"
+custom_size  = "7f"
+sjis_start   = "e380"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "19B4"
+custom_size  = "3f"
+sjis_start   = "e440"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "19F3"
+custom_size  = "7f"
+sjis_start   = "e480"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1A70"
+custom_size  = "3f"
+sjis_start   = "e540"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1AAF"
+custom_size  = "7f"
+sjis_start   = "e580"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1B2C"
+custom_size  = "3f"
+sjis_start   = "e640"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1B6B"
+custom_size  = "7f"
+sjis_start   = "e680"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1BE8"
+custom_size  = "3f"
+sjis_start   = "e740"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1C27"
+custom_size  = "7f"
+sjis_start   = "e780"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1CA4"
+custom_size  = "3f"
+sjis_start   = "e840"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1CE3"
+custom_size  = "7f"
+sjis_start   = "e880"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1D60"
+custom_size  = "3f"
+sjis_start   = "e940"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1D9F"
+custom_size  = "7f"
+sjis_start   = "e980"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1E1C"
+custom_size  = "3f"
+sjis_start   = "ea40"
+
+[[ranges]]
+kind = "shift_jis_offset"
+custom_start = "1E5B"
+custom_size  = "7f"
+sjis_start   = "ea80"
+
 [[mappings]]
 code = "F001"
 char = "\uE000"
