@@ -44,21 +44,25 @@ for child in iso.list_children(iso_path='/'):
 
         print(f"File: {file_name}")
 
-        vocabulary_size = input_content[0] + input_content[1]*0x100 - 2
+        vocabulary_size = (input_content[0] + input_content[1]*0x100 - 2)>>1
         print(f"Vocabulary size: {vocabulary_size}")
 
         #reading vocabulary
         vocabulary = dict()
         for i in range(vocabulary_size):
             vocabulary[i] = bytearray([input_content[i*2+2],input_content[i*2+3]])
+            a = int.from_bytes(vocabulary[i],'big')
+            if ((a<0x7FFF)&(a!=0)):
+                print(f"Wrong vocab entry at {i} : {vocabulary[i]}")
+                sys.exit()
 
         #extend vocabulary to 256
         for i in range(vocabulary_size,256):
-            vocabulary[i] = bytearray(2)
+            vocabulary[i] = bytearray([0, 0])
 
         #recode output content
         output_content = bytearray()
-        for i in range(vocabulary_size+2,len(input_content)):
+        for i in range(vocabulary_size*2+2,len(input_content)):
             code = input_content[i]            
             #print(code)
             output_content += vocabulary[code]
