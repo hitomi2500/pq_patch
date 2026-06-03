@@ -8,6 +8,8 @@ import numpy
 import  pickle
 from pq_charset import PQ_Charset
 
+use_verify = 0
+
 def is_power_of_two(n):
     """
     Checks if a positive integer is a power of two using bitwise operations.
@@ -60,7 +62,7 @@ for child in iso.list_children(iso_path='/'):
         magenta_pattern = numpy.array([255, 0, 255], dtype=numpy.uint8)
         black_pattern = numpy.array([0, 0, 0], dtype=numpy.uint8)
         white_pattern = numpy.array([255, 255, 255], dtype=numpy.uint8)
-        array_data = numpy.empty(((table_y*2)*font_size,(table_x)*font_size,3), dtype=numpy.uint8)
+        array_data = numpy.empty(((table_y*(use_verify+1))*font_size,(table_x)*font_size,3), dtype=numpy.uint8)
         array_data[:] = black_pattern
         font = ImageFont.truetype("ttf/HinaMincho-Regular.ttf", font_size-3)
         #canvas = Image.new("RGB", (font_size, font_size), color=0)
@@ -72,32 +74,34 @@ for child in iso.list_children(iso_path='/'):
             for y in range(16):
                 for x in range(16):
                     if (input_content[current_index*32+y*2+int(x/8)] & (1<<(7-x%8))):
-                        array_data[char_y*16*2+y][char_x*16+x] = white_pattern
+                        array_data[char_y*16*(use_verify+1)+y][char_x*16+x] = white_pattern
+
             #verify kanji
-            draw.rectangle([(0, 0), (16, 16)], fill="black")
-            sjis_bytes = (current_index+0x8140).to_bytes(2, byteorder='big')
-            #sjis_bytes = b'\x82\xb1'
-            try:
-                #decoded_string = sjis_bytes.decode('shift_jis')
-                decoded_string = pq_charset.decode(current_index.to_bytes(2, byteorder='big'))
-            except UnicodeDecodeError:
-                decoded_string = ""
-                if (current_index%4 == 0):
-                    decoded_string = "0x"
-                elif (current_index%4 == 1):
-                    decoded_string = f"{int(current_index/0x100):X}"
-                elif (current_index%4 == 2):
-                    decoded_string = f"{int(current_index%0x100):X}"
-            
-            print(current_index)
-            draw.text(xy=(0,0), text=decoded_string, font=font, fill=(255,255,0) )
-            #print(decoded_string)
-            for y in range(16):
-                for x in range(16):
-                    pixel = im.getpixel((x, y))
-                    #if (pixel[0]):
-                    #    print(pixel)
-                    array_data[char_y*16*2+16+y][char_x*16+x] = numpy.array([pixel[0], pixel[1], pixel[2]], dtype=numpy.uint8)
+            if use_verify:
+                draw.rectangle([(0, 0), (16, 16)], fill="black")
+                sjis_bytes = (current_index+0x8140).to_bytes(2, byteorder='big')
+                #sjis_bytes = b'\x82\xb1'
+                try:
+                    #decoded_string = sjis_bytes.decode('shift_jis')
+                    decoded_string = pq_charset.decode(current_index.to_bytes(2, byteorder='big'))
+                except UnicodeDecodeError:
+                    decoded_string = ""
+                    if (current_index%4 == 0):
+                        decoded_string = "0x"
+                    elif (current_index%4 == 1):
+                        decoded_string = f"{int(current_index/0x100):X}"
+                    elif (current_index%4 == 2):
+                        decoded_string = f"{int(current_index%0x100):X}"
+                
+                print(current_index)
+                draw.text(xy=(0,0), text=decoded_string, font=font, fill=(255,255,0) )
+                #print(decoded_string)
+                for y in range(16):
+                    for x in range(16):
+                        pixel = im.getpixel((x, y))
+                        #if (pixel[0]):
+                        #    print(pixel)
+                        array_data[char_y*16*2+16+y][char_x*16+x] = numpy.array([pixel[0], pixel[1], pixel[2]], dtype=numpy.uint8)
 
 
         #saving image
