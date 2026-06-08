@@ -39,39 +39,38 @@ shutil.copyfile(filename_iso,filename_iso_patched)
 iso_patched = pycdlib.PyCdlib()
 iso_patched.open(filename_iso_patched,'r+b')
 
-for child in iso_patched.list_children(iso_path='/'):
-    file_name = child.file_identifier().decode('utf-8').replace(';1','')
-    if not '.FON' in file_name:
-        continue
-    
-    with iso_patched.open_file_from_iso(iso_path='/'+child.file_identifier().decode('utf-8')) as input_file:
-        input_content = input_file.read() 
-        output_content = bytearray(input_content)
+#patching font file
+with iso_patched.open_file_from_iso(iso_path="/KANJI.FON;1") as input_file:
+    input_content = input_file.read() 
+    output_content = bytearray(input_content)
+    if os.path.isfile(font_file):
+        img = Image.open(font_file)
+        img_array = numpy.asarray(img)
+        print(f"Updating KANJI.FON with {font_file} content")
+        #print(img.size)
+        for char in range(0x60):
+            char_font = char + 0x20
+            for y in range(16):
+                for x in range(8):
+                    if (int(int(char%16)*8+x)>127):
+                        print(f"shit x! {char} {x} {y} {int(int(char%16)*8+x)}")
+                    if (int(int(char/16)*16+y)>95):
+                        print(f"shit y! {char} {x} {y} {int(int(char/16)*16+y)}")
+                    if (img_array[int(int(char/16)*16+y)][int((char%16)*8+x)] != 0):
+                        output_content[int(char_font*32 + y*2)] = output_content[char_font*32 + y*2] | 1<<(7-x)
+                    else:
+                        output_content[int(char_font*32 + y*2)] = output_content[char_font*32 + y*2] & (~(1<<(7-x)))
+                    output_content[int(char_font*32 + y*2 + 1)] = 0 #unused right half of char
 
-        if os.path.isfile(font_file):
-            img = Image.open(font_file)
-            img_array = numpy.asarray(img)
-            print(f"Updating {file_name} with {font_file} content")
+        #print(child.file_identifier().decode('utf-8'))
+        new_fp = io.BytesIO(output_content)
+        iso_patched.modify_file_in_place(new_fp, len(output_content), "/KANJI.FON;1")
 
-            #print(img.size)
-            for char in range(0x60):
-                char_font = char + 0x20
-                for y in range(16):
-                    for x in range(8):
-                        if (int(int(char%16)*8+x)>127):
-                            print(f"shit x! {char} {x} {y} {int(int(char%16)*8+x)}")
-                        if (int(int(char/16)*16+y)>95):
-                            print(f"shit y! {char} {x} {y} {int(int(char/16)*16+y)}")
-                        if (img_array[int(int(char/16)*16+y)][int((char%16)*8+x)] != 0):
-                            output_content[int(char_font*32 + y*2)] = output_content[char_font*32 + y*2] | 1<<(7-x)
-                        else:
-                            output_content[int(char_font*32 + y*2)] = output_content[char_font*32 + y*2] & (~(1<<(7-x)))
-                        output_content[int(char_font*32 + y*2 + 1)] = 0 #unused right half of char
+#patching A.BIN
+with iso_patched.open_file_from_iso(iso_path="/A.BIN;1") as input_file:
+    input_content = input_file.read() 
+    print(len(input_content))
 
-            #print(child.file_identifier().decode('utf-8'))
-            new_fp = io.BytesIO(output_content)
-            iso_patched.modify_file_in_place(new_fp, len(output_content), "/"+child.file_identifier().decode('utf-8'))
-            
         # #counting chars
         # chars = int(len(input_content)/32)
         # print(f"Total chars: {chars}")

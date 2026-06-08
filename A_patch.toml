@@ -1,0 +1,2 @@
+0x5200: 32 1c 32 2c => 31 1c 32 1c  # text_draw_kanji : draw char with interval 8
+0x532a: 32 1c 32 2c => 31 1c 32 1c  # text_draw_kanji : draw shadow with interval 8
