@@ -1,2 +1,13 @@
-0x5200: 32 1c 32 2c => 31 1c 32 1c  # text_draw_kanji : draw char with interval 8
-0x532a: 32 1c 32 2c => 31 1c 32 1c  # text_draw_kanji : draw shadow with interval 8
+[[change]]
+offset = 0x5200
+old = [0x32,0x1c,0x32,0x2c]
+new = [0x31,0x1c,0x32,0x1c]
+func = "text_draw_kanji"
+comment = "draw char with interval 8"
+
+[[change]]
+offset = 0x53a2
+old = [0x32,0x1c,0x32,0x2c]
+new = [0x31,0x1c,0x32,0x1c]
+func = "text_draw_kanji"
+comment = "draw shadow with interval 8"

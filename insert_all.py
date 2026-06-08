@@ -9,9 +9,9 @@ import shutil
 import  pickle
 from pq_charset import PQ_Charset
 import io
+import tomllib
 
 use_verify = 0
-font_file = 'font.png'
 
 def is_power_of_two(n):
     """
@@ -40,6 +40,7 @@ iso_patched = pycdlib.PyCdlib()
 iso_patched.open(filename_iso_patched,'r+b')
 
 #patching font file
+font_file = 'font.png'
 with iso_patched.open_file_from_iso(iso_path="/KANJI.FON;1") as input_file:
     input_content = input_file.read() 
     output_content = bytearray(input_content)
@@ -61,51 +62,27 @@ with iso_patched.open_file_from_iso(iso_path="/KANJI.FON;1") as input_file:
                     else:
                         output_content[int(char_font*32 + y*2)] = output_content[char_font*32 + y*2] & (~(1<<(7-x)))
                     output_content[int(char_font*32 + y*2 + 1)] = 0 #unused right half of char
-
-        #print(child.file_identifier().decode('utf-8'))
         new_fp = io.BytesIO(output_content)
         iso_patched.modify_file_in_place(new_fp, len(output_content), "/KANJI.FON;1")
 
 #patching A.BIN
+a_patch_file = 'A_patch.toml'
 with iso_patched.open_file_from_iso(iso_path="/A.BIN;1") as input_file:
-    input_content = input_file.read() 
-    print(len(input_content))
-
-        # #counting chars
-        # chars = int(len(input_content)/32)
-        # print(f"Total chars: {chars}")
-
-        # table_x = int(math.sqrt(chars))
-        # while (False == is_power_of_two(table_x)):
-        #     table_x = table_x + 1
-        # table_y = int((chars-1)/table_x)+1
-
-        # font_size = 16
-
-        # print(f"Font size {font_size},  chars {chars}, table {table_x}x{table_y}")
-
-        # magenta_pattern = numpy.array([255, 0, 255], dtype=numpy.uint8)
-        # black_pattern = numpy.array([0, 0, 0], dtype=numpy.uint8)
-        # white_pattern = numpy.array([255, 255, 255], dtype=numpy.uint8)
-        # array_data = numpy.empty(((table_y*(use_verify+1))*font_size,(table_x)*font_size,3), dtype=numpy.uint8)
-        # array_data[:] = black_pattern
-        # font = ImageFont.truetype("ttf/HinaMincho-Regular.ttf", font_size-3)
-        # #canvas = Image.new("RGB", (font_size, font_size), color=0)
-        # im = Image.new("RGB", (16, 16), "black")
-        # draw = ImageDraw.Draw(im)
-        # for current_index in range(chars):
-        #     char_x = int(current_index%table_x)
-        #     char_y = int(current_index/table_x)
-        #     for y in range(16):
-        #         for x in range(16):
-        #             if (input_content[current_index*32+y*2+int(x/8)] & (1<<(7-x%8))):
-        #                 array_data[char_y*16*(use_verify+1)+y][char_x*16+x] = white_pattern
-
-        # #saving image
-        # img = Image.fromarray(array_data)#, 'RGB')
-        # img.save(output_folder + '/' + file_name + ".png")
-
-        # with open(output_folder + '/' + file_name, "wb") as file:
-        #     file.write(bytearray(input_content))
-
-        # 
+    input_content = input_file.read()
+    output_content = bytearray(input_content)
+    #print(len(input_content))
+    with open(a_patch_file,"rb") as input_file:
+        print(f"Patching A.BIN with {a_patch_file} content")
+        patch_data = tomllib.load(input_file)
+        for c in patch_data["change"]:
+            offset = int(c["offset"])
+            old = bytes(c["old"])
+            new = bytes(c["new"])
+            size = len(new)
+            assert (len(new)==len(old))
+            if (input_content[offset:offset+size] != old):
+                print(f"Patch error at {offset:x}: old content ({input_content[offset:offset+size]}) != patch old ({old})")
+            else:
+                output_content[offset:offset+size] = new        
+        new_fp = io.BytesIO(output_content)
+        iso_patched.modify_file_in_place(new_fp, len(output_content), "/A.BIN;1")
