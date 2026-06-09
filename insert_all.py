@@ -86,3 +86,36 @@ with iso_patched.open_file_from_iso(iso_path="/A.BIN;1") as input_file:
                 output_content[offset:offset+size] = new        
         new_fp = io.BytesIO(output_content)
         iso_patched.modify_file_in_place(new_fp, len(output_content), "/A.BIN;1")
+
+#patching PRO01.MES
+with iso_patched.open_file_from_iso(iso_path="/PRO01.MES;1") as input_file:
+    input_content = input_file.read()
+    output_content = bytearray(input_content)
+    #test patching vocabulary
+    for i in range(32):
+        output_content[2+i*2] = 0x81
+        output_content[2+i*2+1] = 0x80+i
+    output_content[2+32*2] = 0x81
+    output_content[2+32*2+1] = 0x7F
+    offsettt = 0x41
+    output_content[0x68ec] = ord('L')+offsettt
+    output_content[0x68ed] = ord('O')+offsettt
+    output_content[0x68ee] = ord('R')+offsettt
+    output_content[0x68ef] = ord('E')+offsettt
+    output_content[0x68f0] = ord('E')+offsettt
+    output_content[0x68f1] = ord('M')+offsettt
+    output_content[0x68f2] = ord('A')+offsettt-1
+    output_content[0x68f3] = ord('I')+offsettt
+    output_content[0x68f4] = ord('P')+offsettt
+    output_content[0x68f5] = ord('S')+offsettt
+    output_content[0x68f6] = ord('U')+offsettt
+    output_content[0x68f7] = ord('M')+offsettt
+    output_content[0x68f8] = ord('A')+offsettt-1
+    output_content[0x68f9] = ord('D')+offsettt
+    output_content[0x68fa] = ord('O')+offsettt
+    output_content[0x68fb] = ord('L')+offsettt
+    output_content[0x68fc] = ord('O')+offsettt
+    output_content[0x68fd] = ord('R')+offsettt
+    #output_content[0x68fe] = ord('!')+offsettt
+    new_fp = io.BytesIO(output_content)
+    iso_patched.modify_file_in_place(new_fp, len(output_content), "/PRO01.MES;1")
