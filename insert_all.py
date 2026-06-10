@@ -43,7 +43,7 @@ iso_patched.open(filename_iso_patched,'r+b')
 font_file = 'font.png'
 with iso_patched.open_file_from_iso(iso_path="/KANJI.FON;1") as input_file:
     input_content = input_file.read() 
-    output_content = bytearray(input_content)
+    output_content = bytearray(input_content)#only using first 128 chars
     if os.path.isfile(font_file):
         img = Image.open(font_file)
         img_array = numpy.asarray(img)
@@ -119,3 +119,11 @@ with iso_patched.open_file_from_iso(iso_path="/PRO01.MES;1") as input_file:
     #output_content[0x68fe] = ord('!')+offsettt
     new_fp = io.BytesIO(output_content)
     iso_patched.modify_file_in_place(new_fp, len(output_content), "/PRO01.MES;1")
+
+    iso_patched.close()
+
+#hard-hacking font filesize
+with open(filename_iso_patched, "r+b") as iso_raw:
+    iso_raw.seek(0xa5bc)
+    iso_raw.write(b"\x00\x10\x00\x00\x00\x00\x10\x00")
+    print(b"\x00\x10\x00\x00\x00\x00\x10\x00")
