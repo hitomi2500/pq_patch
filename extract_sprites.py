@@ -61,7 +61,7 @@ for child in iso.list_children(iso_path='/'):
     file_name = child.file_identifier().decode('utf-8').replace(';1','')
     if not 'BIND' in file_name:
         continue
-    if not '.DATa' in file_name:
+    if not '.DAT' in file_name:
         continue
 
     #parse tbl first
