@@ -49,49 +49,49 @@ d9d:db1:Can't transform here
 22e4:22e6:Spirit palace
 26e6:26f7:Can't load this
 68eb:68fe:To be, or not to be, that is the question
-6a0c:6a37:Whether 'tis% nobler in the mind to suffer
-6a76:6aa1:The slings% and arrows% of outrageous fortune,
-6ac6:6ad7:Or to take% arms against a sea% of troubles
-6afc:6b25:And by opposing end them.% To die-to sleep,
-6b4a:6b72:No more;% and by a sleep to say we end
+6a0c:6a37:Whether 'tis%nobler in the mind to suffer
+6a76:6aa1:The slings%and arrows%of outrageous fortune,
+6ac6:6ad7:Or to take%arms against a sea%of troubles
+6afc:6b25:And by opposing end them.%To die-to sleep,
+6b4a:6b72:No more;%and by a sleep to say we end
 6b97:6ba8:The heart-ache and the thousand natural shocks
-6bcd:6be2:That flesh is heir to:% 'tis a consummation%
+6bcd:6be2:That flesh is heir to:%'tis a consummation%
 6c07:6c19:Devoutly to be wish'd. To die, to sleep;
-6c3d:6c4f:To sleep, perchance to% dream-ay, there's the rub
-6d5d:6d6f:For in that% sleep of death what dreams may come,%
+6c3d:6c4f:To sleep, perchance to%dream-ay, there's the rub
+6d5d:6d6f:For in that%sleep of death what dreams may come,%
 6d94:6d9c:When we
-6dc1:6dec:have shuffled% off this mortal% coil,
+6dc1:6dec:have shuffled%off this mortal%coil,
 6e11:6e21:Must give us pause
 6e45:6e52:-there's the respect
 6f27:6f38:That makes calamity
 6f3c:6f5f: of so long life.
 6f63:6f98:For who would bear the whips and scorns of time,
-70a6:70ba:Th'oppressor's wrong,% the proud man's contumely,%
-70df:7103:The pangs of dispriz'd love,% the law's delay,
-7127:7133:The insolence% of office, and the spurns
-7208:7225:That patient merit% of th'unworthy takes,
-7301:730c:When he% himself might his quietus make
+70a6:70ba:Th'oppressor's wrong,%the proud man's contumely,%
+70df:7103:The pangs of dispriz'd love,%the law's delay,
+7127:7133:The insolence%of office, and the spurns
+7208:7225:That patient merit%of th'unworthy takes,
+7301:730c:When he%himself might his quietus make
 731f:7331:With a bare bodkin?
 7344:7356:Who would fardels bear,
-7364:7375:To grunt% and sweat under a weary life,
-73c7:73f2:But% that the dread% of something after death,
-7431:745c:The% undiscovere'd country,% from whose bourn
-7481:7492:No traveller% returns, puzzles the will,%
-74b7:74e0:And makes% us rather bear% those ills we have
-7505:752d:Than% fly to others% that we know not of?
+7364:7375:To grunt%and sweat under a weary life,
+73c7:73f2:But%that the dread%of something after death,
+7431:745c:The%undiscovere'd country,%from whose bourn
+7481:7492:No traveller%returns, puzzles the will,%
+74b7:74e0:And makes%us rather bear%those ills we have
+7505:752d:Than%fly to others%that we know not of?
 7552:7563:Thus conscience
-7588:759d: doth% make cowards of us all,%
+7588:759d: doth%make cowards of us all,%
 75c2:75d4:And thus the native
-75f8:760a: hue% of resolution
-7718:772a:Is sicklied% o'er with the pale%
+75f8:760a: hue%of resolution
+7718:772a:Is sicklied%o'er with the pale%
 774f:7757: cast of thought,
-777c:77a7:And% enterprises of great& pith and moment
+777c:77a7:And%enterprises of great& pith and moment
 77cc:77dc:With this regard
-7800:780d: their% currents turn awry
+7800:780d: their%currents turn awry
 78e2:78f3:And lose the name of action.
 78f7:791a:dummy1
 791e:7953:dummy2
-7a61:7a75:dummy3% dummy4%
-7a9a:7abe:dummy5% dummy6
-7ae2:7aee:dummy7% dummy8
-7bc3:7be0:dummy9% dummy10
+7a61:7a75:dummy3%dummy4%
+7a9a:7abe:dummy5%dummy6
+7ae2:7aee:dummy7%dummy8
+7bc3:7be0:dummy9%dummy10

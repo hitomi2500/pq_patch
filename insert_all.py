@@ -115,10 +115,14 @@ for child in iso_patched.list_children(iso_path='/'):
                 #data_list.append(start,input_content[start:end+1])
                 input_line = line.split(':')[2]
                 for c in input_line:
-                    if (c==' '):
-                        output_content.append(ord('A')+0x61-1)
-                    else:
+                    #if (c==' '):
+                    #    output_content.append(ord('A')+0x61-1)
+                    #else:
+                    c2 = ord(c)
+                    if (c2 > 0x40):
                         output_content.append(ord(c)+0x61)
+                    else:
+                        output_content.append(ord(c)+0x60)
                 last_binary_ind = end+1
                 #print(f"{start},{end}")
             #remaininig part

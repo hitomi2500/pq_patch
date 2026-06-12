@@ -15,9 +15,9 @@
 [[change]]
 offset = 0x2da2
 old = [0x81,0x93]
-new = [0x82,0x4f]
+new = [0x81,0x65]
 func = "MES_execute"
-comment = "change CR code from  % to fullwidth 0"
+comment = "change CR code from sjis % to ascii %"
 
 #[[change]]
 #offset = 0x368
