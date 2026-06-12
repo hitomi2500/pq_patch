@@ -1,23 +1,38 @@
-[[change]]
-offset = 0x5200
-old = [0x32,0x1c,0x32,0x2c]
-new = [0x31,0x1c,0x32,0x1c]
-func = "text_draw_kanji"
-comment = "draw char with interval 8"
+#[[change]]
+#offset = 0x5200
+#old = [0x32,0x1c,0x32,0x2c]
+#new = [0x31,0x1c,0x32,0x1c]
+#func = "text_draw_kanji"
+#comment = "draw char with interval 8"
 
-[[change]]
-offset = 0x53a2
-old = [0x32,0x1c,0x32,0x2c]
-new = [0x31,0x1c,0x32,0x1c]
-func = "text_draw_kanji"
-comment = "draw shadow with interval 8"
+#[[change]]
+#offset = 0x53a2
+#old = [0x32,0x1c,0x32,0x2c]
+#new = [0x31,0x1c,0x32,0x1c]
+#func = "text_draw_kanji"
+#comment = "draw shadow with interval 8"
 
 [[change]]
 offset = 0x2da2
 old = [0x81,0x93]
 new = [0x82,0x4f]
 func = "MES_execute"
-comment = "change CR code from fullwidth % to fullwidth 0"
+comment = "change CR code from  % to fullwidth 0"
+
+#[[change]]
+#offset = 0x368
+#old = [0x01,0x3f]
+#new = [0x02,0x5f]
+#func = "main"
+#comment = "text_draw_x_limit increase"
+
+[[change]]
+offset = 0x36c
+old = [0x10,0x10]
+new = [0x10,0x08]
+func = "main"
+comment = "text_draw_xy_step , dividing by x by 2"
+
 
 #[[change]]
 #offset = 0x2a94
