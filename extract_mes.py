@@ -69,6 +69,36 @@ def fetch_substream(index,stream,txt_output):
     log_print(')',txt_output)
     return i
 
+text_active=0
+text_start_pos=0
+text_data = bytearray()
+
+def text_add(index,char):
+    global text_active
+    global text_data
+    global text_start_pos
+    if 0==text_active:
+        text_active = 1
+        text_start_pos = index
+        text_data = bytearray()
+    text_data+=char
+    return
+
+def text_end(index,txt_output,txt_output_full):
+    global text_active
+    global text_data
+    global text_start_pos
+    if 1==text_active:
+        text_active = 0
+        txt_output += (bytes(f"\r\n{text_start_pos:x}:{index-1:x}:",'latin1'))
+        txt_output_full += (bytes(f"\r\n{text_start_pos:x}:{index-1:x}:",'latin1'))
+        txt_output+=text_data
+        #txt_output+='\r\n'
+        txt_output_full+=text_data
+        #txt_output_full+='\r\n'
+    return
+
+
 filename_iso = 'D:\\Saturn\\PrincessQuest\\ISO\\Princess Quest (Japan).iso'   
 output_folder = 'mes'
 
@@ -119,11 +149,10 @@ for child in iso.list_children(iso_path='/'):
         output_content_full = bytearray()
         i = vocabulary_size*2+2
         #print(type(input_content))
-        text_active=0
         while (i<len(input_content)):
             code = input_content[i]
             if (code in {0,1,2}):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 code=0
                 #output_content_full += (bytes(f"\r\n[{i:x}]",'latin1'))
                 #output_content_full += (bytes(f"<CMD{code:x}>",'latin1'))
@@ -132,12 +161,12 @@ for child in iso.list_children(iso_path='/'):
                 log_print('>',output_content_full)
 
             elif (code in {0x3,0x5,0x12,0x15,0x16,0x17,0x19,0x22,0x2b,0x2d,0x48,0x4c,0x4f,0x55}):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 i=fetch_cmd(i,input_content,output_content_full)
                 log_print('>',output_content_full)
 
             elif (code == 4):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 i=fetch_cmd(i,input_content,output_content_full)
                 arg1 = input_content[i]
                 if (arg1 in {0x24}):
@@ -149,14 +178,14 @@ for child in iso.list_children(iso_path='/'):
                 log_print('>',output_content_full)
 
             elif (code in {0xc}):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 i=fetch_cmd(i,input_content,output_content_full)
                 i=fetch_char(i,input_content,output_content_full)
                 i=fetch_substream(i,input_content,output_content_full)
                 log_print('>',output_content_full)
 
             elif (code in {0xd}):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 i=fetch_cmd(i,input_content,output_content_full)
                 arg1 = input_content[i]
                 i=fetch_char(i,input_content,output_content_full)
@@ -176,7 +205,7 @@ for child in iso.list_children(iso_path='/'):
                 log_print('>',output_content_full)
 
             elif (code in {0x7,0x8,0x9,0xa,0xb,0xf,0x11,0x13,0x18,0x1a,0x20,0x21,0x25,0x27,0x30,0x31,0x32,0x33,0x34,0x35,0x36,0x37,0x38,0x39,0x3a,0x3b,0x3c,0x3d,0x3e,0x3f,0x40,0x41,0x42,0x44,0x46,0x49,0x4a,0x4b,0x4d,0x4e,0x52,0x53,0x54,0x56,0x58,0x59,0x5a}):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 i=fetch_cmd(i,input_content,output_content_full)
                 #output_content_full += (bytes(f"\r\n[{i:x}]",'latin1'))
                 #output_content_full += (bytes(f"<CMD{code:x}",'latin1'))
@@ -188,7 +217,7 @@ for child in iso.list_children(iso_path='/'):
                 log_print('>',output_content_full)
 
             elif (code == 6):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 log_position(i,output_content_full)
                 log_print('(FILE ',output_content_full)
                 i+=1
@@ -200,7 +229,7 @@ for child in iso.list_children(iso_path='/'):
                 log_print(')',output_content_full)
                 
             elif (code < 97):
-                text_active=0
+                text_end(i,output_content,output_content_full)
                 i=fetch_token(i,input_content,output_content)
                 i=fetch_token(i,input_content,output_content_full)
                 #output_content += (bytes(f"<{code:x}>",'latin1'))
@@ -208,31 +237,31 @@ for child in iso.list_children(iso_path='/'):
                 #code-=1
                 #i+=1
             elif (code < 128):
-                if (0==text_active):
-                    log_position(i,output_content)
-                    log_position(i,output_content_full)
-                    #output_content += (bytes(f"\r\n[{i+1:x}]",'latin1'))
-                    #output_content_full += (bytes(f"\r\n[{i+1:x}]",'latin1'))
-                text_active=1
-                output_content += (code+0x20).to_bytes(1)
-                output_content_full += (code+0x20).to_bytes(1)
+#                if (0==text_active):
+                    #log_position(i,output_content)
+                    #log_position(i,output_content_full)
+#                   text_start(i)
+#                text_active=1
+                #output_content += (code+0x20).to_bytes(1)
+                #output_content_full += (code+0x20).to_bytes(1)
+                text_add(i,(code+0x20).to_bytes(1))
                 i+=1
                 code = input_content[i]
-                output_content += code.to_bytes(1)
-                output_content_full += code.to_bytes(1)
+                #output_content += code.to_bytes(1)
+                #output_content_full += code.to_bytes(1)
+                text_add(i,code.to_bytes(1))
                 i+=1
             else:
-                if (0==text_active):
-                    log_position(i,output_content)
-                    log_position(i,output_content_full)
-                    #output_content += (bytes(f"\r\n[{i:x}]",'latin1'))
-                    #output_content_full += (bytes(f"\r\n[{i:x}]",'latin1'))
-                text_active=1
+                #if (0==text_active):
+                    #log_position(i,output_content)
+                    #log_position(i,output_content_full)
+ #               text_active=1
                 code -= 128
                 assert(code >=0)
                 assert(code <=127)
-                output_content += vocabulary[code]
-                output_content_full += vocabulary[code]
+                text_add(i,vocabulary[code])
+                #output_content += vocabulary[code]
+                #output_content_full += vocabulary[code]
                 i+=1
 
         # #saving data

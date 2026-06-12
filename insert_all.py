@@ -87,31 +87,84 @@ with iso_patched.open_file_from_iso(iso_path="/A.BIN;1") as input_file:
         new_fp = io.BytesIO(output_content)
         iso_patched.modify_file_in_place(new_fp, len(output_content), "/A.BIN;1")
 
+#patching all .MES files
+for child in iso_patched.list_children(iso_path='/'):
+    file_name = child.file_identifier().decode('utf-8').replace(';1','')
+    if not '.MES' in file_name:
+        continue
+    patch_name = "translation/"+file_name+".txt"
+    #print(patch_name)
+    if not os.path.exists(patch_name):
+        continue
+    print(f"Patching {file_name}")
+    with iso_patched.open_file_from_iso(iso_path='/'+child.file_identifier().decode('utf-8')) as input_file:
+        input_content = input_file.read()
+        output_content = bytearray()
+        with open(patch_name,'r') as transl_file:
+            transl_str = transl_file.read().splitlines()
+            #splitting content
+            data_list = list()
+            last_binary_ind = 0
+            for line in transl_str:
+                start = int(line.split(':')[0],16)
+                end = int(line.split(':')[1],16)
+                #data before text
+                #data_list.append(last_binary_ind,input_content[last_binary_ind:start])
+                output_content+=input_content[last_binary_ind:start]
+                #now replacing the text
+                #data_list.append(start,input_content[start:end+1])
+                input_line = line.split(':')[2]
+                for c in input_line:
+                    if (c==' '):
+                        output_content.append(ord('A')+0x61-1)
+                    else:
+                        output_content.append(ord(c)+0x61)
+                last_binary_ind = end+1
+                #print(f"{start},{end}")
+            #remaininig part
+            output_content+=input_content[last_binary_ind:]
+            #replacing vocabulary
+            old_vocabulary_size = (output_content[0] + output_content[1]*0x100 - 2)>>1
+            del output_content[:old_vocabulary_size*2+2]
+            new_vocabulary = bytearray(b'\xc4\x00')
+            for i in range(96):
+                new_vocabulary += 0x81.to_bytes(1)
+                new_vocabulary += (0x60+i).to_bytes(1)
+            new_vocabulary += 0x81.to_bytes(1)
+            new_vocabulary += 0x7f.to_bytes(1)
+            output_content[:0] = new_vocabulary
+            #saving
+            new_fp = io.BytesIO(output_content)
+            print(len(input_content))
+            print(len(output_content))
+            iso_patched.modify_file_in_place(new_fp, len(output_content), '/'+child.file_identifier().decode('utf-8'))
+
+
 #patching PRO01.MES
-with iso_patched.open_file_from_iso(iso_path="/PRO01.MES;1") as input_file:
-    print(f"Patching PRO01.MES")
-    input_content = input_file.read()
-    #output_content = bytearray(input_content)
-    #first part of stream
-    output_content = bytearray(input_content[0:0x68ec])
-    #test patching vocabulary
-    for i in range(64):
-        output_content[2+i*2] = 0x81
-        output_content[2+i*2+1] = 0x80+i
-    output_content[2+64*2] = 0x81
-    output_content[2+64*2+1] = 0x7F
-    offsettt = 0x41
-    insert_str="Lorem ipsum dolor sit amet"
-    #insert_str="ABCDEFGHIJKLMOPQRSTUVWXYZ"
-    #insert_str="abcdefghijklmnopqrstuvwxyz"
-    for c in insert_str:
-        if (c==' '):
-            output_content.append(ord('A')+offsettt-1)
-        else:
-            output_content.append(ord(c)+offsettt)
-    output_content += bytearray(input_content[0x68ff:])
-    new_fp = io.BytesIO(output_content)
-    iso_patched.modify_file_in_place(new_fp, len(output_content), "/PRO01.MES;1")
+# with iso_patched.open_file_from_iso(iso_path="/PRO01.MES;1") as input_file:
+#     print(f"Patching PRO01.MES")
+#     input_content = input_file.read()
+#     #output_content = bytearray(input_content)
+#     #first part of stream
+#     output_content = bytearray(input_content[0:0x68ec])
+#     #test patching vocabulary
+#     for i in range(64):
+#         output_content[2+i*2] = 0x81
+#         output_content[2+i*2+1] = 0x80+i
+#     output_content[2+64*2] = 0x81
+#     output_content[2+64*2+1] = 0x7F
+#     offsettt = 0x41
+#     insert_str="Lorem ipsum dolor sit amet"
+#     #insert_str="ABCDEFGHIJKLMOPQRSTUVWXYZ"
+#     #insert_str="abcdefghijklmnopqrstuvwxyz"
+#     for c in insert_str:
+#         if (c==' '):
+#             output_content.append(ord('A')+offsettt-1)
+#         else:
+#             output_content.append(ord(c)+offsettt)
+#     output_content += bytearray(input_content[0x68ff:])
+#     new_fp = io.BytesIO(output_content)
+#     iso_patched.modify_file_in_place(new_fp, len(output_content), "/PRO01.MES;1")
 
 #patching SIRO1A.MES
 

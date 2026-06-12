@@ -1,97 +1,97 @@
-d9d:Can't transform here
-1217:No items
-131f:Nothing to equip
-14c0:Data save
-14c7:Data load
-1624:Can't save
-167c:Please select
-1776:No data
-177e:Data 1
-17b3:Ch　
-17bb:Castle
-17c0:Spirit palace
-17c8:Can't save
-17d1:%
-17e5:No data
-17ed:Data 2
-1822:Ch　
-182a:Castle
-182f:Spirit palace
-1837:Can't save
-1840:%
-1854:No data
-185c:Data 3
-1891:Ch　
-1899:Castle
-189e:Spirit palace
-18a6:Can't save
-1cb8:Saving data.%Do not turn off the power
-1d08:Saving complete
-1f81:Can't load
-20b0:Nothing to load
-210e:Please select
-21ec:No data
-21f4:Data 1
-2229:Ch
-2231:Castle
-2236:Spirit palace
-223b:%
-2243:No data
-224b:Data 2　
-2280:Ch　
-2288:Castle
-228d:Spirit palace
-2292:%
-229a:No data
-22a2:Data 3　
-22d7:Ch　
-22df:Castle
-22e4:Spirit palace
-26e6:Can't load this
-68eb:To be, or not to be, that is the question
-6a0c:Whether 'tis% nobler in the mind to suffer
-6a76:The slings% and arrows% of outrageous fortune,
-6ac6:Or to take% arms against a sea% of troubles
-6afc:And by opposing end them.% To die-to sleep,
-6b4a:No more;% and by a sleep to say we end
-6b97:The heart-ache and the thousand natural shocks
-6bcd:That flesh is heir to:% 'tis a consummation%
-6c07:Devoutly to be wish'd. To die, to sleep;
-6c3d:To sleep, perchance to% dream-ay, there's the rub:
-6d5d:For in that% sleep of death what dreams may come,%
-6d94:When we
-6dc1:have shuffled% off this mortal% coil,
-6e11:Must give us pause
-6e45:-there's the respect
-6f27:That makes calamity
-6f3c: of so long life.
-6f63:For who would bear the whips and scorns of time,
-70a6:Th'oppressor's wrong,% the proud man's contumely,%
-70df:The pangs of dispriz'd love,% the law's delay,
-7127:The insolence% of office, and the spurns
-7208:That patient merit% of th'unworthy takes,
-7301:When he% himself might his quietus make
-731f:With a bare bodkin?
-7344:Who would fardels bear,
-7364:To grunt% and sweat under a weary life,
-73c7:But% that the dread% of something after death,
-7431:The% undiscovere'd country,% from whose bourn
-7481:No traveller% returns, puzzles the will,%
-74b7:And makes% us rather bear% those ills we have
-7505:Than% fly to others% that we know not of?
-7552:Thus conscience
-7588: doth% make cowards of us all,%
-75c2:And thus the native
-75f8: hue% of resolution
-7718:Is sicklied% o'er with the pale%
-774f: cast of thought,
-777c:And% enterprises of great& pith and moment
-77cc:With this regard
-7800: their% currents turn awry
-78e2:And lose the name of action.
-78f7:dummy1
-791e:dummy2
-7a61:dummy3% dummy4%
-7a9a:dummy5% dummy6
-7ae2:dummy7% dummy8
-7bc3:dummy9% dummy10
+d9d:db1:Can't transform here
+1217:1228:No items
+131f:1333:Nothing to equip
+14c0:14c5:Data save
+14c7:14cc:Data load
+1624:162d:Can't save
+167c:1687:Please select
+1776:177a:No data
+177e:1783:Data 1
+17b3:17b4:Ch
+17bb:17bc:Castle
+17c0:17c2:Spirit palace
+17c8:17cf:Can't save
+17d1:17d1:%
+17e5:17e9:No data
+17ed:17f2:Data 2
+1822:1823:Ch
+182a:182b:Castle
+182f:1831:Spirit palace
+1837:183e:Can't save
+1840:1840:%
+1854:1858:No data
+185c:1861:Data 3
+1891:1892:Ch
+1899:189a:Castle
+189e:18a0:Spirit palace
+18a6:18ad:Can't save
+1cb8:1cd5:Saving data.%Do not turn off the power
+1d08:1d14:Saving complete
+1f81:1f8a:Can't load
+20b0:20bf:Nothing to load
+210e:2119:Please select
+21ec:21f0:No data
+21f4:21f9:Data 1
+2229:222a:Ch
+2231:2232:Castle
+2236:2238:Spirit palace
+223b:223b:%
+2243:2247:No data
+224b:2250:Data 2
+2280:2281:Ch
+2288:2289:Castle
+228d:228f:Spirit palace
+2292:2292:%
+229a:229e:No data
+22a2:22a7:Data 3
+22d7:22d8:Ch
+22df:22e0:Castle
+22e4:22e6:Spirit palace
+26e6:26f7:Can't load this
+68eb:68fe:To be, or not to be, that is the question
+6a0c:6a37:Whether 'tis% nobler in the mind to suffer
+6a76:6aa1:The slings% and arrows% of outrageous fortune,
+6ac6:6ad7:Or to take% arms against a sea% of troubles
+6afc:6b25:And by opposing end them.% To die-to sleep,
+6b4a:6b72:No more;% and by a sleep to say we end
+6b97:6ba8:The heart-ache and the thousand natural shocks
+6bcd:6be2:That flesh is heir to:% 'tis a consummation%
+6c07:6c19:Devoutly to be wish'd. To die, to sleep;
+6c3d:6c4f:To sleep, perchance to% dream-ay, there's the rub
+6d5d:6d6f:For in that% sleep of death what dreams may come,%
+6d94:6d9c:When we
+6dc1:6dec:have shuffled% off this mortal% coil,
+6e11:6e21:Must give us pause
+6e45:6e52:-there's the respect
+6f27:6f38:That makes calamity
+6f3c:6f5f: of so long life.
+6f63:6f98:For who would bear the whips and scorns of time,
+70a6:70ba:Th'oppressor's wrong,% the proud man's contumely,%
+70df:7103:The pangs of dispriz'd love,% the law's delay,
+7127:7133:The insolence% of office, and the spurns
+7208:7225:That patient merit% of th'unworthy takes,
+7301:730c:When he% himself might his quietus make
+731f:7331:With a bare bodkin?
+7344:7356:Who would fardels bear,
+7364:7375:To grunt% and sweat under a weary life,
+73c7:73f2:But% that the dread% of something after death,
+7431:745c:The% undiscovere'd country,% from whose bourn
+7481:7492:No traveller% returns, puzzles the will,%
+74b7:74e0:And makes% us rather bear% those ills we have
+7505:752d:Than% fly to others% that we know not of?
+7552:7563:Thus conscience
+7588:759d: doth% make cowards of us all,%
+75c2:75d4:And thus the native
+75f8:760a: hue% of resolution
+7718:772a:Is sicklied% o'er with the pale%
+774f:7757: cast of thought,
+777c:77a7:And% enterprises of great& pith and moment
+77cc:77dc:With this regard
+7800:780d: their% currents turn awry
+78e2:78f3:And lose the name of action.
+78f7:791a:dummy1
+791e:7953:dummy2
+7a61:7a75:dummy3% dummy4%
+7a9a:7abe:dummy5% dummy6
+7ae2:7aee:dummy7% dummy8
+7bc3:7be0:dummy9% dummy10
