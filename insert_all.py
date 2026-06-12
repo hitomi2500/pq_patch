@@ -20,6 +20,7 @@ def is_power_of_two(n):
     """
     return n > 0 and (n & (n - 1)) == 0
 
+filename_1_bin = 'D:\\Saturn\\PrincessQuest\\ISO\\Princess Quest (Japan) (Track 1).bin'   
 filename_iso = 'D:\\Saturn\\PrincessQuest\\ISO\\Princess Quest (Japan).iso'   
 filename_iso_patched = 'D:\\Saturn\\PrincessQuest\\ISO\\Princess Quest (Japan) (Patched).iso'   
 
@@ -179,3 +180,14 @@ with open(filename_iso_patched, "r+b") as iso_raw:
     iso_raw.seek(0xa5bc)
     iso_raw.write(b"\x00\x10\x00\x00\x00\x00\x10\x00")
     #print(b"\x00\x10\x00\x00\x00\x00\x10\x00")
+
+
+#generate bin outta iso
+with open(filename_iso_patched, 'rb') as iso_raw:
+    with open(filename_iso_patched+'.bin', "wb") as bin_raw:
+        with open(filename_1_bin, "rb") as bin_vanilla:
+            for i in range(224903):
+                buf_bin = bin_vanilla.read(2352)
+                buf_iso = iso_raw.read(2048)
+                buf_bin2 = buf_bin[:16]+buf_iso+buf_bin[2064:]
+                bin_raw.write(buf_bin2)

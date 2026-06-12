@@ -48,7 +48,7 @@ d9d:db1:Can't transform here
 22df:22e0:Castle
 22e4:22e6:Spirit palace
 26e6:26f7:Can't load this
-68eb:68fe:To be, or not to be, that is the question
+68eb:68fe:To be, or not to be, that is the%question
 6a0c:6a37:Whether 'tis%nobler in the mind to suffer
 6a76:6aa1:The slings%and arrows%of outrageous fortune,
 6ac6:6ad7:Or to take%arms against a sea%of troubles
