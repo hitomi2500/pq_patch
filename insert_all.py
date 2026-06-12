@@ -101,7 +101,7 @@ with iso_patched.open_file_from_iso(iso_path="/PRO01.MES;1") as input_file:
     output_content[2+64*2] = 0x81
     output_content[2+64*2+1] = 0x7F
     offsettt = 0x41
-    insert_str="Lorem ipsum dolor sit amet ololo trololo wahaaaa"
+    insert_str="Lorem ipsum dolor sit amet"
     #insert_str="ABCDEFGHIJKLMOPQRSTUVWXYZ"
     #insert_str="abcdefghijklmnopqrstuvwxyz"
     for c in insert_str:
@@ -109,25 +109,6 @@ with iso_patched.open_file_from_iso(iso_path="/PRO01.MES;1") as input_file:
             output_content.append(ord('A')+offsettt-1)
         else:
             output_content.append(ord(c)+offsettt)
-    #output_content[0x68ec] = ord('L')+offsettt
-    #output_content[0x68ed] = ord('O')+offsettt
-    #output_content[0x68ee] = ord('R')+offsettt
-    #output_content[0x68ef] = ord('E')+offsettt
-    #output_content[0x68f0] = ord('M')+offsettt
-    #output_content[0x68f1] = ord('A')+offsettt-1
-    #output_content[0x68f2] = ord('I')+offsettt
-    #output_content[0x68f3] = ord('P')+offsettt
-    #output_content[0x68f4] = ord('S')+offsettt
-    #output_content[0x68f5] = ord('U')+offsettt
-    #output_content[0x68f6] = ord('M')+offsettt
-    #output_content[0x68f7] = ord('A')+offsettt-1
-    #output_content[0x68f8] = ord('D')+offsettt
-    #output_content[0x68f9] = ord('O')+offsettt
-    #output_content[0x68fa] = ord('L')+offsettt
-    #output_content[0x68fb] = ord('O')+offsettt
-    #output_content[0x68fc] = ord('R')+offsettt
-    #output_content[0x68fd] = ord('A')+offsettt-1
-    #output_content[0x68fe] = ord('!')+offsettt
     output_content += bytearray(input_content[0x68ff:])
     new_fp = io.BytesIO(output_content)
     iso_patched.modify_file_in_place(new_fp, len(output_content), "/PRO01.MES;1")

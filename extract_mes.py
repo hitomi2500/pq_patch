@@ -32,6 +32,10 @@ def fetch_char(index,stream,txt_output):
    txt_output += (bytes(f",{stream[index]:x}",'latin1'))
    return index+1
 
+def fetch_token(index,stream,txt_output):
+   txt_output += (bytes(f"[{stream[index]:x}]",'latin1'))
+   return index+1
+
 def fetch_char_direct(index,stream,txt_output):
    txt_output += (bytes(chr(stream[index]),'latin1'))
    return index+1
@@ -186,49 +190,43 @@ for child in iso.list_children(iso_path='/'):
             elif (code == 6):
                 text_active=0
                 log_position(i,output_content_full)
-                log_print('[FILE ',output_content_full)
+                log_print('(FILE ',output_content_full)
                 i+=1
                 while (input_content[i] != 6):
                     i=fetch_char_direct(i,input_content,output_content_full)
                     #print(input_content[i])
                     #log_print(f"{i:x}",output_content_full)
                 i+=1
-                log_print(']',output_content_full)
+                log_print(')',output_content_full)
                 
-            #elif (code == 0xc):
-            #    output_content += bytes(f"<{code:x}: ",'latin1')
-            #    for j in range(3):
-            #        output_content += (bytes(f"{input_content[i+j+1]:x} ",'latin1'))
-            #    output_content += b'>'
-            #    i+=3
-            #elif (code == 0xd):
-            #    output_content += bytes(f"<{code:x}: ",'latin1')
-            #    for j in range(8):
-            #        output_content += (bytes(f"{input_content[i+j+1]:x} ",'latin1'))
-            #    output_content += b'>'
-            #    i+=8
             elif (code < 97):
                 text_active=0
-                output_content += (bytes(f"<{code:x}>",'latin1'))
-                output_content_full += (bytes(f"<{code:x}>",'latin1'))
-                code-=1
-                i+=1
+                i=fetch_token(i,input_content,output_content)
+                i=fetch_token(i,input_content,output_content_full)
+                #output_content += (bytes(f"<{code:x}>",'latin1'))
+                #output_content_full += (bytes(f"<{code:x}>",'latin1'))
+                #code-=1
+                #i+=1
             elif (code < 128):
                 if (0==text_active):
-                    output_content += (bytes(f"\r\n[{i+1:x}]",'latin1'))
-                    output_content_full += (bytes(f"\r\n[{i+1:x}]",'latin1'))
+                    log_position(i,output_content)
+                    log_position(i,output_content_full)
+                    #output_content += (bytes(f"\r\n[{i+1:x}]",'latin1'))
+                    #output_content_full += (bytes(f"\r\n[{i+1:x}]",'latin1'))
                 text_active=1
                 output_content += (code+0x20).to_bytes(1)
                 output_content_full += (code+0x20).to_bytes(1)
-                i=i+1
+                i+=1
                 code = input_content[i]
                 output_content += code.to_bytes(1)
                 output_content_full += code.to_bytes(1)
                 i+=1
             else:
                 if (0==text_active):
-                    output_content += (bytes(f"\r\n[{i:x}]",'latin1'))
-                    output_content_full += (bytes(f"\r\n[{i:x}]",'latin1'))
+                    log_position(i,output_content)
+                    log_position(i,output_content_full)
+                    #output_content += (bytes(f"\r\n[{i:x}]",'latin1'))
+                    #output_content_full += (bytes(f"\r\n[{i:x}]",'latin1'))
                 text_active=1
                 code -= 128
                 assert(code >=0)
